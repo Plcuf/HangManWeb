@@ -34,5 +34,5 @@ func main() {
 	RootDoc, _ := os.Getwd()
 	fileserver := http.FileServer(http.Dir(RootDoc + "/web/"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fileserver))
-	http.ListenAndServe("localhost:8080", nil)
+	http.ListenAndServe("localhost:6969", nil)
 }

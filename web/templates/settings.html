@@ -6,13 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title> Règles </title>
-        <link rel="stylesheet" href="/static/settings.css">
+        <link rel="stylesheet" href="/assets/style/settings.css">
     </head>
     <body>
-        <h1> Les règles </h1>
-        <p>
-            
-        </p>
+        <h1> Paramètres </h1>
+        <div>
+            <form>
+                <div class="difficulty">
+                    <input id="easy" type="radio" value="easy" name="Difficulty" checked>
+                    <label for="easy">Facile</label>
+                    <input id="medium" type="radio" value="medium" name="Difficulty">
+                    <label for="medium">Moyen</label>
+                    <input id="hard" type="radio" value="hard" name="Difficulty">
+                    <label for="hard">Difficile</label>
+                </div>
+                <div class="language">
+                    <input id="french" type="radio" value="french" name="Language" checked>
+                    <label for="french">Français</label>
+                    <input id="english" type="radio" value="english" name="Language" checked>
+                    <label for="english">English</label>
+                </div>
+            </form>>
+        </div>
     </body>
 </html>
 {{end}}

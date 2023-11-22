@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(60, 60, 70);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 6%;
+    font: 3rem "Fira Sans", sans-serif;
+    text-shadow: 5px 10px 10px black;
+}
+
+a {
+    text-align: center;
+    font: 3rem "Fira Sans", sans-serif;
+    margin: 1%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-decoration: none;
+    border: 5px solid white;
+    border-radius: 15px;
+    color: white;
+    text-shadow: 5px 10px 10px black;
+    box-shadow: 5px 10px 10px black;
+}
