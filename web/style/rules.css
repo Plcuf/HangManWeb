@@ -8,13 +8,17 @@ body {
 }
 
 h1 {
+    padding: 1%;
     font: 3rem "Fira Sans", sans-serif;
+    text-shadow: 5px 10px 10px black;
+    border: 5px double white;
 }
 
 p {
-    margin-top: 10%;
-    max-width: 60%;
+    margin-top: 5%;
+    max-width: 50%;
     font: 1.5rem "Fira Sans", sans-serif;
+    text-shadow: 5px 10px 10px black;
 }
 
 a {
@@ -28,4 +32,6 @@ a {
     border: 2px solid;
     border-radius: 10px;
     text-align: center;
+    text-shadow: 5px 10px 10px black;
+    box-shadow: 5px 10px 10px black;
 }
