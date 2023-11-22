@@ -24,6 +24,7 @@ func main() {
 		File    string
 		Letters []string
 		Word    string
+		Points  int
 	}
 
 	Actual := Settings{"easy", "English"}
@@ -34,9 +35,9 @@ func main() {
 	Game := GameData{FilePath, []string{}, ""}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := Actual
+		Game.Word = ""
 
-		temp.ExecuteTemplate(w, "index", data)
+		temp.ExecuteTemplate(w, "index", nil)
 	})
 
 	http.HandleFunc("/rules", func(w http.ResponseWriter, r *http.Request) {
@@ -57,13 +58,14 @@ func main() {
 	})
 
 	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
-		Game.Word = fonctions.GetWord(fonctions.GetWords())
+		Game.Word = fonctions.GetWord(fonctions.GetWords(FilePath))
 
 		temp.ExecuteTemplate(w, "game", Game)
 	})
 
 	http.HandleFunc("/game/treatment", func(w http.ResponseWriter, r *http.Request) {
-		Game.Letters = append(Game.Letters, r.FormValue("letter"))
+		playedLetter := r.FormValue("letter")
+		Game.Letters = append(Game.Letters, playedLetter)
 
 		http.Redirect(w, r, "/game", http.StatusSeeOther)
 	})
