@@ -1,6 +1,7 @@
 package main
 
 import (
+	"HangmanWeb/fonctions"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -56,6 +57,8 @@ func main() {
 	})
 
 	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
+		Game.Word = fonctions.GetWord(fonctions.GetWords())
+
 		temp.ExecuteTemplate(w, "game", Game)
 	})
 
