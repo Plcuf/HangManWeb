@@ -5,32 +5,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title> Règles </title>
+        <title> Paramètres </title>
         <link rel="stylesheet" href="/assets/style/settings.css">
     </head>
     <body>
-        <h1> Paramètres </h1>
-        <div>
-            <form action="/settings/treatment" method="post">
-                <div class="difficulty">
-                    <h5>Difficulté :</h5>
-                    <input id="easy" type="radio" value="easy" name="Difficulty" checked>
-                    <label for="easy">Facile</label>
-                    <input id="medium" type="radio" value="medium" name="Difficulty">
-                    <label for="medium">Moyen</label>
-                    <input id="hard" type="radio" value="hard" name="Difficulty">
-                    <label for="hard">Difficile</label>
-                </div>
-                <div class="language">
-                    <h5>Language :</h5>
-                    <input id="french" type="radio" value="french" name="Language" checked>
-                    <label for="french">Français</label>
-                    <input id="english" type="radio" value="english" name="Language">
-                    <label for="english">English</label>
-                </div>
-                <button type="submit">Enregistrer</button>
-            </form>
+        <div class="everything">
+            <h1> Paramètres </h1>
+            <div class="forms">
+                <form>
+                    <div class="difficulty">
+                        <h2>Difficulté</h2>
+                        <input id="easy" type="radio" value="easy" name="Difficulty" checked>
+                        <label for="easy">Facile</label>
+                        <input id="medium" type="radio" value="medium" name="Difficulty">
+                        <label for="medium">Moyen</label>
+                        <input id="hard" type="radio" value="hard" name="Difficulty">
+                        <label for="hard">Difficile</label>
+                    </div>
+                    <div class="language">
+                        <h2>Langue</h2>
+                        <input id="french" type="radio" value="french" name="Language" checked>
+                        <label for="french">Français</label>
+                        <input id="english" type="radio" value="english" name="Language">
+                        <label for="english">English</label>
+                    </div>
+                </form>
+            </div>
         </div>
+        <a href="/index"> X </a>
     </body>
 </html>
 {{end}}

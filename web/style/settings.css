@@ -1,10 +1,6 @@
 body {
     background-color: rgb(60, 60, 70);
     color: white;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
 }
 
 h1 {
@@ -14,11 +10,15 @@ h1 {
     border: 5px double white;
 }
 
-p {
-    margin-top: 5%;
-    max-width: 50%;
-    font: 1.5rem "Fira Sans", sans-serif;
-    text-shadow: 5px 10px 10px black;
+.everything {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forms {
+    font: 3rem "Fira Sans", sans-serif;
 }
 
 a {
