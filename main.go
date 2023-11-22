@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	temp, err := template.ParseGlob("templates/*.html")
+	temp, err := template.ParseGlob("web/templates/*.html")
 	if err != nil {
 		fmt.Println("Erreur > ", err)
 		return
@@ -34,5 +34,5 @@ func main() {
 	RootDoc, _ := os.Getwd()
 	fileserver := http.FileServer(http.Dir(RootDoc + "/web/"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fileserver))
-	http.ListenAndServe("localhost: 8080", nil)
+	http.ListenAndServe("localhost:8080", nil)
 }
