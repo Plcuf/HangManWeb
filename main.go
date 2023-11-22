@@ -14,13 +14,21 @@ func main() {
 		return
 	}
 
-	type Data struct {
+	type Settings struct {
+		Difficulty int
+		Language   string
 	}
 
+	Actual := Settings{0, "English"}
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := "coucou"
+		data := Actual
 
 		temp.ExecuteTemplate(w, "index", data)
+	})
+
+	http.HandleFunc("/rules", func(w http.ResponseWriter, r *http.Request) {
+		temp.ExecuteTemplate(w, "rules", nil)
 	})
 
 	RootDoc, _ := os.Getwd()
