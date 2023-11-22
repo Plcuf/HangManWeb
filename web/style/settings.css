@@ -18,24 +18,64 @@ h1 {
 }
 
 .forms {
-    font: 3rem "Fira Sans", sans-serif;
+    font: 2.5rem "Fira Sans", sans-serif;
 }
 
-a {
+.difficulty, .language {
+    width: 150%;
+}
+
+input {
+    visibility: hidden;
+}
+
+label {
+    text-align: center;
+    background-color: #3c3c46;
+    margin: 1%;
+    border: 5px solid white;
+    border-radius: 15px;
+    color: white;
+}
+
+#easy:checked ~ #easylabel {
+    box-shadow: 5px 10px 10px black;
+    background-color: #4b3d52;
+}
+#medium:checked ~ #mediumlabel {
+    box-shadow: 5px 10px 10px black;
+    background-color: #4b3d52;
+}
+#hard:checked ~ #hardlabel {
+    box-shadow: 5px 10px 10px black;
+    background-color: #4b3d52;
+}
+#french:checked ~ #frenchlabel {
+    box-shadow: 5px 10px 10px black;
+    background-color: #4b3d52;
+}
+#english:checked ~ #englishlabel {
+    box-shadow: 5px 10px 10px black;
+    background-color: #4b3d52;
+}
+
+button {
     position: absolute;
     top: 0%;
     left: 0%;
     margin: 2%;
     text-decoration: none;
-    color: white;
     padding: 1%;
-    border: 2px solid;
+    border: 2px solid white;
+    background-color: #3c3c46;
+    color: white;
     border-radius: 10px;
     text-align: center;
     text-shadow: 5px 10px 10px black;
+    font: 1rem "Fira Sans", sans-serif;
 }
 
-a:hover {
+button:hover {
     box-shadow: 5px 10px 10px black;
     background-color: #4b3d52;
 }
