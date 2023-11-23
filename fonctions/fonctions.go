@@ -1,6 +1,7 @@
 package fonctions
 
 import (
+	"fmt"
 	"math/rand"
 	"os"
 )
@@ -8,13 +9,13 @@ import (
 func GetWords(name string) []string {
 	file, err := os.OpenFile(name, os.O_RDONLY, 0644)
 	if err != nil {
-		panic(err)
+		fmt.Println("Erreur > ", err)
 	}
 	defer file.Close()
 
 	data, err := os.ReadFile(file.Name())
 	if err != nil {
-		panic(err)
+		fmt.Println("Erreur > ", err)
 	}
 
 	slice := []string{}

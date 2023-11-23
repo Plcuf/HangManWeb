@@ -28,6 +28,7 @@ func main() {
 		Points     int
 		Life       int
 		TriedWords []string
+		Setts      Settings
 	}
 
 	Actual := Settings{"easy", "english"}
@@ -35,7 +36,7 @@ func main() {
 	FileName := Actual.Difficulty + ".txt"
 	FilePath := "/assets/texts/" + Actual.Language + "/" + FileName
 
-	Game := GameData{FilePath, []string{}, "", "", 0, 10, []string{}}
+	Game := GameData{FilePath, []string{}, "", "", 0, 10, []string{}, Actual}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		Game.Word = ""
@@ -48,7 +49,7 @@ func main() {
 	})
 
 	http.HandleFunc("/settings", func(w http.ResponseWriter, r *http.Request) {
-		temp.ExecuteTemplate(w, "settings", nil)
+		temp.ExecuteTemplate(w, "settings", Actual)
 	})
 
 	http.HandleFunc("/settings/treatment", func(w http.ResponseWriter, r *http.Request) {
@@ -56,6 +57,8 @@ func main() {
 
 		FileName = Actual.Difficulty + ".txt"
 		FilePath = "/assets/texts/" + Actual.Language + "/" + FileName
+
+		Game.Setts = Actual
 
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	})
