@@ -15,14 +15,31 @@
                 <form action="/index" method="post">
                     <div class="difficulty">
                         <h2>Difficulté</h2>
+
+                        {{if eq .Difficulty "easy"}}
                         <input id="easy" type="radio" value="easy" name="Difficulty" checked>
+                        {{else}}
+                        <input id="easy" type="radio" value="easy" name="Difficulty">
+                        {{end}}
                         <label id="easylabel" for="easy">Facile</label>
+
+                        {{if eq .Difficulty "medium"}}
+                        <input id="medium" type="radio" value="medium" name="Difficulty" checked>
+                        {{else}}
                         <input id="medium" type="radio" value="medium" name="Difficulty">
+                        {{end}}
                         <label id="mediumlabel" for="medium">Moyen</label>
+
+                        {{if eq .Difficulty "hard"}}
+                        <input id="hard" type="radio" value="hard" name="Difficulty" checked>
+                        {{else}}
                         <input id="hard" type="radio" value="hard" name="Difficulty">
+                        {{end}}
                         <label id="hardlabel" for="hard">Difficile</label>
+
                     </div>
                     <div class="language">
+
                         <h2>Langue</h2>
                         <input id="french" type="radio" value="french" name="Language" checked>
                         <label id="frenchlabel" for="french">Français</label>
