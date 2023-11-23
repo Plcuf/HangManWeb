@@ -31,7 +31,7 @@ func main() {
 		Setts      Settings
 	}
 
-	Actual := Settings{"easy", "english"}
+	Actual := Settings{"easy", "french"}
 
 	FileName := Actual.Difficulty + ".txt"
 	FilePath := "/assets/texts/" + Actual.Language + "/" + FileName
