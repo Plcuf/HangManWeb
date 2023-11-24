@@ -2,22 +2,17 @@ package fonctions
 
 import (
 	"fmt"
+	"io/fs"
 	"math/rand"
-	"os"
 )
 
 func GetWords(name string) []string {
-	file, err := os.OpenFile(name, os.O_RDONLY, 0644)
+	var fsys fs.FS
+	fsys.Open("/assets/*")
+	data, err := fs.ReadFile(fsys, name)
 	if err != nil {
 		fmt.Println("Erreur > ", err)
 	}
-	defer file.Close()
-
-	data, err := os.ReadFile(file.Name())
-	if err != nil {
-		fmt.Println("Erreur > ", err)
-	}
-
 	slice := []string{}
 	word := ""
 
