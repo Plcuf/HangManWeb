@@ -14,8 +14,7 @@
             <div class="forms">
                 <form action="/settings/treatment" method="post">
                     <div class="difficulty">
-                        <h2>Difficulté</h2>
-
+                        <h2>Difficulté :</h2>
                         {{if eq .Difficulty "easy"}}
                         <input id="easy" type="radio" value="easy" name="difficulty" checked>
                         {{else}}
@@ -39,7 +38,7 @@
 
                     </div>
                     <div class="language">
-                        <h2>Langue</h2>
+                        <h2>Langue :</h2>
 
                         {{if eq .Language "french"}}
                         <input id="french" type="radio" value="french" name="language" checked>
