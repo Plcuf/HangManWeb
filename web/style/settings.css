@@ -1,28 +1,41 @@
-body {
-    background-color: rgb(60, 60, 70);
-    color: white;
-}
-
-h1 {
-    padding: 1%;
-    font: 3rem "Fira Sans", sans-serif;
-    text-shadow: 5px 10px 10px black;
-    border: 5px double white;
-}
-
-h2 {
-    text-decoration: underline;
-}
-
-.everything {
+body{
+    background-color: rgb(37, 37, 37);
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
 }
 
+h1 {
+    font-size: 75px;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    --text-stroke-color: rgb(255, 255, 255);
+    color: transparent;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+    display: flex;
+    justify-content: center;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #a100e6, 0 0 40px #c700e6, 0 0 50px #cf00e6, 0 0 60px #e600de, 0 0 70px #e200e6;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px rgb(219, 77, 255),rgb(243, 77, 255)px #ea4dff,rgb(255, 77, 222)px #f94dff, 0 0 60px #f94dff, 0 0 70px #f34dff, 0 0 80px #ff4df3;
+    }
+}
+
+h2 {
+    text-decoration: underline;
+    text-shadow: 0 0 10px #8c6d9b;
+}
+
 .forms {
     font: 2rem "Fira Sans", sans-serif;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .difficulty, .language {
@@ -34,34 +47,53 @@ input {
 }
 
 label {
-    padding: 0.5%;
-    text-align: center;
-    background-color: #3c3c46;
-    margin: 1%;
-    border: 3px solid white;
-    border-radius: 15px;
-    color: white;
+    padding: 1%;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    --text-stroke-color: rgb(255, 255, 255);
+    inset: 0;
+    overflow: hidden;
+    font-family: "Arial";
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2%;
+    text-decoration: none;
+    font-size: 30px;
+    color: transparent;
+    display: grid;
+    place-items: center;
+    background: rgb(142, 135, 138);
+    padding: 1%;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0);
+    cursor: pointer;
+    transition: transform 0.5s;
+    box-shadow: 5px 5px 5px black;
 }
 
 #easy:checked ~ #easylabel {
-    box-shadow: 5px 10px 10px black;
-    background-color: #4b3d52;
+    box-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #a100e6, 0 0 15px #c700e6, 0 0 20px #cf00e6, 0 0 25px #e600de, 0 0 30px #e200e6;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translate(0.2em, 0.2em);
 }
 #medium:checked ~ #mediumlabel {
-    box-shadow: 5px 10px 10px black;
-    background-color: #4b3d52;
+    box-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #a100e6, 0 0 15px #c700e6, 0 0 20px #cf00e6, 0 0 25px #e600de, 0 0 30px #e200e6;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translate(0.2em, 0.2em);
 }
 #hard:checked ~ #hardlabel {
-    box-shadow: 5px 10px 10px black;
-    background-color: #4b3d52;
+    box-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #a100e6, 0 0 15px #c700e6, 0 0 20px #cf00e6, 0 0 25px #e600de, 0 0 30px #e200e6;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translate(0.2em, 0.2em);
 }
 #french:checked ~ #frenchlabel {
-    box-shadow: 5px 10px 10px black;
-    background-color: #4b3d52;
+    box-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #a100e6, 0 0 15px #c700e6, 0 0 20px #cf00e6, 0 0 25px #e600de, 0 0 30px #e200e6;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translate(0.2em, 0.2em);
 }
 #english:checked ~ #englishlabel {
-    box-shadow: 5px 10px 10px black;
-    background-color: #4b3d52;
+    box-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #a100e6, 0 0 15px #c700e6, 0 0 20px #cf00e6, 0 0 25px #e600de, 0 0 30px #e200e6;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translate(0.2em, 0.2em);
 }
 
 button {
@@ -71,16 +103,19 @@ button {
     margin: 2%;
     text-decoration: none;
     padding: 1%;
-    border: 2px solid white;
-    background-color: #3c3c46;
+    border: 1px solid rgba(0,0,0,0);
+    background: rgb(142, 135, 138);
     color: white;
     border-radius: 10px;
     text-align: center;
     text-shadow: 5px 10px 10px black;
     font: 1rem "Fira Sans", sans-serif;
+    cursor: pointer;
+    transition: transform 0.5s;
 }
 
 button:hover {
-    box-shadow: 5px 10px 10px black;
-    background-color: #4b3d52;
+    box-shadow: 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #a100e6, 0 0 15px #c700e6, 0 0 20px #cf00e6, 0 0 25px #e600de, 0 0 30px #e200e6;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translate(0.2em, 0.2em);
 }
