@@ -8,7 +8,7 @@ import (
 
 func GetWords(name string) []string {
 	var fsys fs.FS
-	fsys.Open("/assets/*")
+	fsys.Open("/texts/*")
 	data, err := fs.ReadFile(fsys, name)
 	if err != nil {
 		fmt.Println("Erreur > ", err)
