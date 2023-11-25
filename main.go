@@ -1,7 +1,7 @@
 package main
 
 import (
-	"HangmanWeb/fonctions"
+	fonctions "HangmanWeb/fonctions"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -39,11 +39,12 @@ func main() {
 	Actual := Settings{"easy", "french"}
 
 	FileName := Actual.Difficulty + ".txt"
-	FilePath := "/web/texts/" + Actual.Language + "/" + FileName
+	FilePath := "texts/" + Actual.Language + "/" + FileName
 
 	Game := GameData{FilePath, []string{}, "", "", 0, 10, []string{}, Actual, "no"}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println(FilePath)
 		temp.ExecuteTemplate(w, "index", nil)
 	})
 
@@ -59,7 +60,7 @@ func main() {
 		Actual = Settings{r.FormValue("difficulty"), r.FormValue("language")}
 
 		FileName = Actual.Difficulty + ".txt"
-		FilePath = "/web/texts/" + Actual.Language + "/" + FileName
+		FilePath = "texts/" + Actual.Language + "/" + FileName
 
 		Game.Setts = Actual
 
@@ -68,7 +69,7 @@ func main() {
 
 	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
 		if Game.Word == "" {
-			Game.Word = fonctions.GetWord(fonctions.GetWords(Game.File))
+			Game.Word = fonctions.GetWord(fonctions.GetWords(FilePath))
 			Game.Display = fonctions.GetFirstDisplay(Game.Word)
 		}
 		Game.Status = "running"
@@ -82,7 +83,7 @@ func main() {
 		if len(playedLetter) == 1 {
 			Game.Letters = append(Game.Letters, playedLetter)
 			if fonctions.VerifyLetter(Game.Word, playedLetter) {
-				Game.Display = fonctions.Display(Game.Word, playedLetter[0], Game.Display)
+				Game.Display = fonctions.Display(Game.Word, Game.Letters)
 				if Game.Display == Game.Word {
 					Game.Status = "won"
 					http.Redirect(w, r, "/game/win", http.StatusSeeOther)
