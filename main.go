@@ -111,7 +111,6 @@ func main() {
 				}
 			}
 		}
-
 	})
 
 	http.HandleFunc("/game/win", func(w http.ResponseWriter, r *http.Request) {
