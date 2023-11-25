@@ -106,7 +106,7 @@ func main() {
 
 	})
 
-	http.HandleFunc("/game/Win", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/game/win", func(w http.ResponseWriter, r *http.Request) {
 		Game.Life = 10
 		temp.ExecuteTemplate(w, "win", Game)
 	})
