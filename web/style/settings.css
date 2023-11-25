@@ -18,7 +18,7 @@ h1 {
     justify-content: center;
 }
 
-@-webkit-keyframes glow {
+@keyframes glow {
     from {
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #a100e6, 0 0 40px #c700e6, 0 0 50px #cf00e6, 0 0 60px #e600de, 0 0 70px #e200e6;
     }
@@ -29,7 +29,7 @@ h1 {
 
 h2 {
     text-decoration: underline;
-    text-shadow: 0 0 10px #8c6d9b;
+    text-shadow: 0 0 10px #d191f1;
 }
 
 .forms {
@@ -112,6 +112,7 @@ button {
     font: 1rem "Fira Sans", sans-serif;
     cursor: pointer;
     transition: transform 0.5s;
+    box-shadow: 5px 5px 5px black;
 }
 
 button:hover {

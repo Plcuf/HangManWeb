@@ -1,35 +1,21 @@
-body{
+body {
     background-color: rgb(37, 37, 37);
+    font: "Fira Sans", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-h1 {
-    font-size: 75px;
-    -webkit-text-stroke: 1px var(--text-stroke-color);
-    --text-stroke-color: rgb(255, 255, 255);
-    color: transparent;
-    text-align: center;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    animation: glow 1s ease-in-out infinite alternate;
+img {
+    margin-top: 3%;
+    width: 20%;
+    border-radius: 50px;
 }
 
-@-webkit-keyframes glow {
-    from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #a100e6, 0 0 40px #c700e6, 0 0 50px #cf00e6, 0 0 60px #e600de, 0 0 70px #e200e6;
-    }
-    to {
-        text-shadow: 0 0 20px #fff, 0 0 30px rgb(219, 77, 255),rgb(243, 77, 255)px #ea4dff,rgb(255, 77, 222)px #f94dff, 0 0 60px #f94dff, 0 0 70px #f34dff, 0 0 80px #ff4df3;
-    }
-}
-
-p {
+h2 {
     color: white;
-    margin-top: 5%;
-    max-width: 50%;
-    font: 1.5rem "Fira Sans", sans-serif;
+    padding: 5%;
+    font-size: 5em;
     text-shadow: 5px 10px 10px rgb(135, 82, 127);
 }
 
