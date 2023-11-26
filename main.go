@@ -41,7 +41,7 @@ func main() {
 	FileName := Actual.Difficulty + ".txt"
 	FilePath := "texts/" + Actual.Language + "/" + FileName
 
-	Game := GameData{FilePath, []string{}, "", "", 0, 10, []string{}, Actual, "no"}
+	Game := GameData{FilePath, []string{}, "", "", 0, 2, []string{}, Actual, "no"}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(FilePath)
@@ -134,5 +134,5 @@ func main() {
 		}
 	})
 
-	http.ListenAndServe("localhost:6969", nil)
+	http.ListenAndServe("localhost:6901", nil)
 }

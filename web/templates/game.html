@@ -6,12 +6,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title> Game </title>
-        <link rel="stylesheet" href="/assets/style/index.css">
+        <link rel="stylesheet" href="/assets/style/game.css">
     </head>
     <body>
-        <p>
-            {{.Display}}
-        </p>
+        <div class="pendu">
+            {{if eq .Life 10}}
+            <img src="/assets/images/step1.png">
+            {{end}}
+            {{if eq .Life 9}}
+            <img src="/assets/images/step2.png">
+            {{end}}
+            {{if eq .Life 8}}
+            <img src="/assets/images/step3.png">
+            {{end}}
+            {{if eq .Life 7}}
+            <img src="/assets/images/step4.png">
+            {{end}}
+            {{if eq .Life 6}}
+            <img src="/assets/images/step5.png">
+            {{end}}
+            {{if eq .Life 5}}
+            <img src="/assets/images/step6.png">
+            {{end}}
+            {{if eq .Life 4}}
+            <img src="/assets/images/step7.png">
+            {{end}}
+            {{if eq .Life 3}}
+            <img src="/assets/images/step8.png">
+            {{end}}
+            {{if eq .Life 2}}
+            <img src="/assets/images/step9.png">
+            {{end}}
+            {{if eq .Life 1}}
+            <img src="/assets/images/step10.png">
+            {{end}}
+        </div>
+        
+        <p class="display"> {{.Display}} </p>
+        
+        <div class="life">
+            <label for="vie"> Vous avez &nbsp;</label>
+            <p id="vie"> {{.Life}} &nbsp;</p>
+            <label for="vie"> vies </label>
+        </div>
+
+        <div>
+            <label for="used"> Lettres utilisées </label>
+            {{range .Letter}}
+            <p id="used"> {{.}} </p>
+            {{end}}
+        </div>
+
+        <div>
+
+        </div>
+
+        <form action="/game/treatment" method="post">
+            <input id="input" type="text" name="try" placeholder="Fait de ton mieux" autofocus>
+        </form>
     </body>
 </html>
 {{end}}
