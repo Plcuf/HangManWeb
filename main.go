@@ -30,7 +30,6 @@ func main() {
 		Letters    []string
 		Word       string
 		Display    string
-		Points     int
 		Life       int
 		TriedWords []string
 		Setts      Settings
@@ -42,7 +41,7 @@ func main() {
 	FileName := Actual.Difficulty + ".txt"
 	FilePath := "texts/" + Actual.Language + "/" + FileName
 
-	Game := GameData{FilePath, []string{}, "", "", 0, 10, []string{}, Actual, "no"}
+	Game := GameData{FilePath, []string{}, "", "", 10, []string{}, Actual, "no"}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(FilePath)
