@@ -9,6 +9,13 @@
         <link rel="stylesheet" href="/assets/style/game.css">
     </head>
     <body>
+
+        <div class="stats">
+            <p> {{.Setts.Difficulty}} </p>
+            <p> &nbsp; / &nbsp;</p>
+            <p> {{.Setts.Language}} </p>
+        </div>
+
         <div class="pendu">
             {{if eq .Life 10}}
             <img src="/assets/images/step1.png">
