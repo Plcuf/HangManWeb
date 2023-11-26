@@ -69,15 +69,21 @@ func main() {
 	})
 
 	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
-		if Game.Word == "" {
-			Game.Word = fonctions.GetWord(fonctions.GetWords(FilePath))
-			firstDisplay := fonctions.GetFirstDisplay(Game.Word)
-			Game.Display = firstDisplay[0]
-			Game.Letters = append(Game.Letters, firstDisplay[1])
-		}
-		Game.Status = "running"
+		if Game.Status == "won" {
+			http.Redirect(w, r, "/game/win", http.StatusSeeOther)
+		} else if Game.Status == "lost" {
+			http.Redirect(w, r, "/game/lose", http.StatusSeeOther)
+		} else {
+			if Game.Word == "" {
+				Game.Word = fonctions.GetWord(fonctions.GetWords(FilePath))
+				firstDisplay := fonctions.GetFirstDisplay(Game.Word)
+				Game.Display = firstDisplay[0]
+				Game.Letters = append(Game.Letters, firstDisplay[1])
+			}
+			Game.Status = "running"
 
-		temp.ExecuteTemplate(w, "game", Game)
+			temp.ExecuteTemplate(w, "game", Game)
+		}
 	})
 
 	http.HandleFunc("/game/treatment", func(w http.ResponseWriter, r *http.Request) {
@@ -91,46 +97,39 @@ func main() {
 			Game.Letters = append(Game.Letters, try)
 			if fonctions.VerifyLetter(Game.Word, try) {
 				Game.Display = fonctions.Display(Game.Word, Game.Letters)
-				fmt.Println(Game.Display, Game.Word)
 				if Game.Display == Game.Word {
 					Game.Status = "won"
-					http.Redirect(w, r, "/game/win", http.StatusSeeOther)
 				}
 			} else {
 				Game.Life--
 				if Game.Life <= 0 {
 					Game.Status = "lost"
-					http.Redirect(w, r, "/game/lose", http.StatusSeeOther)
-				} else {
-					http.Redirect(w, r, "/game", http.StatusSeeOther)
 				}
 			}
 		} else if len(try) == len(Game.Word) {
 			if try == Game.Word {
 				Game.Status = "won"
-				http.Redirect(w, r, "/game/win", http.StatusSeeOther)
 			} else {
 				Game.Life -= 2
 				Game.TriedWords = append(Game.TriedWords, try)
 				if Game.Life <= 0 {
 					Game.Status = "lost"
-					http.Redirect(w, r, "/game/lose", http.StatusSeeOther)
-				} else {
-					http.Redirect(w, r, "/game", http.StatusSeeOther)
 				}
 			}
 		}
+		http.Redirect(w, r, "/game", http.StatusSeeOther)
 	})
 
 	http.HandleFunc("/game/win", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("bon!")
-		if Game.Status == "won" {
+		if Game.Status != "won" {
+			http.Redirect(w, r, "/game", http.StatusSeeOther)
+		} else {
 			Game.Life = 10
 			Game.Word = ""
-			fmt.Println("bon")
+			Game.Status = "no"
+			Game.Display = ""
+			Game.Letters = []string{}
 			temp.ExecuteTemplate(w, "win", Game)
-		} else {
-			http.Redirect(w, r, "/game", http.StatusSeeOther)
 		}
 	})
 
@@ -140,9 +139,12 @@ func main() {
 		} else {
 			Game.Life = 10
 			Game.Word = ""
+			Game.Status = "no"
+			Game.Display = ""
+			Game.Letters = []string{}
 			temp.ExecuteTemplate(w, "lose", Game)
 		}
 	})
 
-	http.ListenAndServe("localhost:6902", nil)
+	http.ListenAndServe("localhost:6969", nil)
 }
