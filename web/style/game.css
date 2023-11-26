@@ -1,0 +1,52 @@
+body {
+    background-color: rgb(37, 37, 37);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.pendu {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 50%;
+}
+
+.display {
+    margin-top: 0;
+    margin-bottom: 3%;
+    font: 3em "Fira Sans", sans-serif;
+}
+
+.life {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    font: 1.5em "Fira Sans", sans-serif;
+}
+
+.letter {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    font: 1.5em "Fira Sans", sans-serif;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font: 1.5em "Fira Sans", sans-serif;
+}
+
+form input {
+    text-transform: lowercase;
+    font: 1.5em "Fira Sans", sans-serif;
+}

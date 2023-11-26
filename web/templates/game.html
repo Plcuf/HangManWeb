@@ -6,12 +6,89 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title> Game </title>
-        <link rel="stylesheet" href="/assets/style/index.css">
+        <link rel="stylesheet" href="/assets/style/game.css">
     </head>
     <body>
-        <p>
-            {{.Display}}
-        </p>
+
+        <div class="stats">
+            <p> {{.Setts.Difficulty}} </p>
+            <p> &nbsp; / &nbsp;</p>
+            <p> {{.Setts.Language}} </p>
+        </div>
+
+        <div class="pendu">
+            {{if eq .Life 10}}
+            <img src="/assets/images/step1.png">
+            {{end}}
+            {{if eq .Life 9}}
+            <img src="/assets/images/step2.png">
+            {{end}}
+            {{if eq .Life 8}}
+            <img src="/assets/images/step3.png">
+            {{end}}
+            {{if eq .Life 7}}
+            <img src="/assets/images/step4.png">
+            {{end}}
+            {{if eq .Life 6}}
+            <img src="/assets/images/step5.png">
+            {{end}}
+            {{if eq .Life 5}}
+            <img src="/assets/images/step6.png">
+            {{end}}
+            {{if eq .Life 4}}
+            <img src="/assets/images/step7.png">
+            {{end}}
+            {{if eq .Life 3}}
+            <img src="/assets/images/step8.png">
+            {{end}}
+            {{if eq .Life 2}}
+            <img src="/assets/images/step9.png">
+            {{end}}
+            {{if eq .Life 1}}
+            <img src="/assets/images/step10.png">
+            {{end}}
+        </div>
+        
+        <p class="display"> {{.Display}} </p>
+        
+        <div class="life">
+            <label for="vie"> Vous avez &nbsp;</label>
+            <p id="vie"> {{.Life}} &nbsp;</p>
+            <label for="vie"> vies </label>
+        </div>
+
+        <div class="letter">
+            <label for="used"> Lettres utilisées : &nbsp;</label>
+            {{range .Letters}}
+            <p id="used"> {{.}} &nbsp;</p>
+            {{end}}
+        </div>
+
+        <form action="/game/treatment" method="post">
+            {{if ge .Life 8}}
+            <input id="input" type="text" name="try" placeholder="Choisis une lettre ^^" autofocus>
+            {{end}}
+            {{if ge .Life 6}}
+            {{if lt .Life 8}}
+            <input id="input" type="text" name="try" placeholder="Choisis une lettre" autofocus>
+            {{end}}
+            {{end}}
+            {{if ge .Life 4}}
+            {{if lt .Life 6}}
+            <input id="input" type="text" name="try" placeholder="Choisis bien" autofocus>
+            {{end}}
+            {{end}}
+            {{if ge .Life 2}}
+            {{if lt .Life 4}}
+            <input id="input" type="text" name="try" placeholder="Fait attention." autofocus>
+            {{end}}
+            {{end}}
+            {{if ge .Life 0}}
+            {{if lt .Life 2}}
+            <input id="input" type="text" name="try" placeholder="Tu veux mourir ?" autofocus>
+            {{end}}
+            {{end}}
+        </form>
     </body>
 </html>
 {{end}}
