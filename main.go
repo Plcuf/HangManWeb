@@ -102,7 +102,7 @@ func main() {
 				}
 			} else {
 				Game.Life--
-				if Game.Life == 0 {
+				if Game.Life <= 0 {
 					Game.Status = "lost"
 					http.Redirect(w, r, "/game/lose", http.StatusSeeOther)
 				} else {
