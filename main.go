@@ -91,6 +91,7 @@ func main() {
 			Game.Letters = append(Game.Letters, try)
 			if fonctions.VerifyLetter(Game.Word, try) {
 				Game.Display = fonctions.Display(Game.Word, Game.Letters)
+				fmt.Println(Game.Display, Game.Word)
 				if Game.Display == Game.Word {
 					Game.Status = "won"
 					http.Redirect(w, r, "/game/win", http.StatusSeeOther)
@@ -122,12 +123,14 @@ func main() {
 	})
 
 	http.HandleFunc("/game/win", func(w http.ResponseWriter, r *http.Request) {
-		if Game.Status != "won" {
-			http.Redirect(w, r, "/game", http.StatusSeeOther)
-		} else {
+		fmt.Println("bon!")
+		if Game.Status == "won" {
 			Game.Life = 10
 			Game.Word = ""
+			fmt.Println("bon")
 			temp.ExecuteTemplate(w, "win", Game)
+		} else {
+			http.Redirect(w, r, "/game", http.StatusSeeOther)
 		}
 	})
 
@@ -141,5 +144,5 @@ func main() {
 		}
 	})
 
-	http.ListenAndServe("localhost:6901", nil)
+	http.ListenAndServe("localhost:6902", nil)
 }
