@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"strings"
 )
 
 func main() {
@@ -85,6 +86,7 @@ func main() {
 		if !checkvalue {
 			http.Redirect(w, r, "/game", http.StatusSeeOther)
 		}
+		try = strings.ToLower(try)
 		if len(try) == 1 {
 			Game.Letters = append(Game.Letters, try)
 			if fonctions.VerifyLetter(Game.Word, try) {
