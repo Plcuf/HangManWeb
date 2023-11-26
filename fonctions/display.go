@@ -2,7 +2,7 @@ package fonctions
 
 import "math/rand"
 
-func GetFirstDisplay(word string) string {
+func GetFirstDisplay(word string) []string {
 	discovered := rand.Intn(len(word))
 	displayed := ""
 
@@ -14,7 +14,7 @@ func GetFirstDisplay(word string) string {
 		}
 	}
 
-	return displayed
+	return []string{displayed, string(word[discovered])}
 }
 
 func Display(word string, discovered []string) string {
