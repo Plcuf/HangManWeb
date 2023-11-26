@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"strings"
 )
 
 func GetWords(name string) []string {
@@ -24,6 +25,7 @@ func GetWords(name string) []string {
 	for _, c := range data {
 		c := string(c)
 		if c == "\n" {
+			word = strings.TrimSpace(word)
 			slice = append(slice, word)
 			word = ""
 		} else {
