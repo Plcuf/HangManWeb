@@ -91,11 +91,6 @@ func main() {
 			Game.Letters = append(Game.Letters, try)
 			if fonctions.VerifyLetter(Game.Word, try) {
 				Game.Display = fonctions.Display(Game.Word, Game.Letters)
-				for i := 0; i < len(Game.Letters); i++ {
-					if try == Game.Letters[i] {
-						http.Redirect(w, r, "/game", http.StatusSeeOther)
-					}
-				}
 				if Game.Display == Game.Word {
 					Game.Status = "won"
 					http.Redirect(w, r, "/game/win", http.StatusSeeOther)
