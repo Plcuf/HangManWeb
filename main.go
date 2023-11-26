@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"net/http"
 	"os"
+	"regexp"
 )
 
 func main() {
@@ -70,7 +71,9 @@ func main() {
 	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
 		if Game.Word == "" {
 			Game.Word = fonctions.GetWord(fonctions.GetWords(FilePath))
-			Game.Display = fonctions.GetFirstDisplay(Game.Word)
+			firstDisplay := fonctions.GetFirstDisplay(Game.Word)
+			Game.Display = firstDisplay[0]
+			Game.Letters = append(Game.Letters, firstDisplay[1])
 		}
 		Game.Status = "running"
 
@@ -78,11 +81,14 @@ func main() {
 	})
 
 	http.HandleFunc("/game/treatment", func(w http.ResponseWriter, r *http.Request) {
-		playedLetter := r.FormValue("letter")
-		triedWord := r.FormValue("word")
-		if len(playedLetter) == 1 {
-			Game.Letters = append(Game.Letters, playedLetter)
-			if fonctions.VerifyLetter(Game.Word, playedLetter) {
+		try := r.FormValue("try")
+		checkvalue, _ := regexp.MatchString("^[a-zA-Z-]{1-64}$", try)
+		if !checkvalue {
+			http.Redirect(w, r, "/game", http.StatusSeeOther)
+		}
+		if len(try) == 1 {
+			Game.Letters = append(Game.Letters, try)
+			if fonctions.VerifyLetter(Game.Word, try) {
 				Game.Display = fonctions.Display(Game.Word, Game.Letters)
 				if Game.Display == Game.Word {
 					Game.Status = "won"
@@ -97,14 +103,14 @@ func main() {
 					http.Redirect(w, r, "/game", http.StatusSeeOther)
 				}
 			}
-		} else if len(triedWord) == len(Game.Word) {
-			if triedWord == Game.Word {
+		} else if len(try) == len(Game.Word) {
+			if try == Game.Word {
 				Game.Status = "won"
 				http.Redirect(w, r, "/game/win", http.StatusSeeOther)
 			} else {
-				Game.Life--
-				Game.TriedWords = append(Game.TriedWords, triedWord)
-				if Game.Life == 0 {
+				Game.Life -= 2
+				Game.TriedWords = append(Game.TriedWords, try)
+				if Game.Life <= 0 {
 					Game.Status = "lost"
 					http.Redirect(w, r, "/game/lose", http.StatusSeeOther)
 				} else {
