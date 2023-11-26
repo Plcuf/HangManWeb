@@ -94,16 +94,24 @@ func main() {
 		}
 		try = strings.ToLower(try)
 		if len(try) == 1 {
-			Game.Letters = append(Game.Letters, try)
-			if fonctions.VerifyLetter(Game.Word, try) {
-				Game.Display = fonctions.Display(Game.Word, Game.Letters)
-				if Game.Display == Game.Word {
-					Game.Status = "won"
+			alreadySaid := false
+			for i := 0; i < len(Game.Letters); i++ {
+				if try == Game.Letters[i] {
+					alreadySaid = true
 				}
-			} else {
-				Game.Life--
-				if Game.Life <= 0 {
-					Game.Status = "lost"
+			}
+			if !alreadySaid {
+				Game.Letters = append(Game.Letters, try)
+				if fonctions.VerifyLetter(Game.Word, try) {
+					Game.Display = fonctions.Display(Game.Word, Game.Letters)
+					if Game.Display == Game.Word {
+						Game.Status = "won"
+					}
+				} else {
+					Game.Life--
+					if Game.Life <= 0 {
+						Game.Status = "lost"
+					}
 				}
 			}
 		} else if len(try) == len(Game.Word) {
